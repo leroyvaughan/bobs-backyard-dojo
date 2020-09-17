@@ -1,0 +1,36 @@
+ - max of three days per any given week
+ - can only schedule in a single week at a time, or go monthly (*Bob may have other things to do)
+ - max of 12 days per any given month
+ - can only schedule one month at a time (*Bob may have other plans in the next month)
+ - only 2 or 3 hour sessions available
+ - 30% discount, for any group (gt 1 person, supersedes other discounts)
+
+
+(Sessions can be 2 or 3 hours)
+  Daily rate
+    $40/$55 per drop-in session
+
+  Weekly Rate @ 3 sessions  (same week only)
+    - 10% Discount
+
+  Monthly Rate @ 12 Sessions (same month only)
+    - 20% Discount
+
+
+
+
+NOTES:
+	- dynamic generation of dates via an input month/year
+			> caveat: validation of algorithm for edge cases (leap year, year changes, [etc?])
+			> caveat: first and last day of week algorithm
+
+	- beginning of week starts on Sunday (because I said so)
+
+	- splitting logic of date checking
+			> helpers.isValidDateArray: only checks for length of array
+			> actual functions { chargeOneDay, chargeOneWeek, chargeOneMonth }: will check date validity
+
+	- (Use Case Rules Validation): isValidMonth vs. isSameMonth in dataChecks
+			> sameMonth can return true on 10/36/2020
+			> validMonth will return false
+
