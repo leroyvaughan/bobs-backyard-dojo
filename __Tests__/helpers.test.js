@@ -266,7 +266,7 @@ describe("Helper Funcs Tests", () => {
       expect(result).toBe(globals.DifferingWeeksErr);
     });
 
-    it("isValidDatesArray({ 2 dates, len: 2 }", () => {
+    it("isValidDatesArray({ 1 date, len: 2 }", () => {
       //testing case 2
       let result = Helpers.isValidDatesArray(
         { dates: ["10/9/2020"] }, 2);

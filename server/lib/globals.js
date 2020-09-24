@@ -62,9 +62,11 @@ const returnObj = function() {
   const _invalidTimePerSessionErr = "Invalid time per session!";
   self.invalidTimePerSessionErr = _invalidTimePerSessionErr;
 
+  const _noRequestBodyErr = "No request body!";
+  self.noRequestBodyErr = _noRequestBodyErr;
 
-
-
+  const _schedulerErrTxt = "Error in Scheduler:";
+  self.schedulerErrTxt = _schedulerErrTxt;
   return self;
 };//end returnObj
 

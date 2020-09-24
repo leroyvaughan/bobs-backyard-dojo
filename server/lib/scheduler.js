@@ -1,12 +1,9 @@
-// const data = require('../data');
-
 const globals = require('./globals')();
 const helpers = require('./helpers')();
 
 
 const returnObj = function() {
   const self = this;
-
 
 
   //leave no room for error in data later on
@@ -35,7 +32,6 @@ const returnObj = function() {
 
     //  ...data check has passed
     dataCheck.isValid = true;
-
     return dataCheck;
   };
   self.checkDataTest = (json, len) => {
@@ -43,6 +39,49 @@ const returnObj = function() {
   };
 
 
+  //direct path for json schedule post
+  self.postSchedule = (json) => {
+    return new Promise((resolve, reject) => {
+      let resp = {
+        isValid: false,
+        errMsg: globals.noRequestBodyErr
+      };
+
+      //testing the assumption that days scheduled
+      //was added on the Front End
+      if(isNull(json.scheduledDays)) {
+        reject(resp);
+      }
+      else{
+        //only routing here. err checks happen in each code path
+        //test "switch" in pricing-controller (integration) tests
+
+        switch(json.scheduledDays) {
+          case 1:
+            resp = _chargeOneDay(json);
+            break;
+
+          case 2:
+            resp = _chargeMultipleDays(json, 2);
+            break;
+
+          case 3:
+            resp = _chargeMultipleDays(json, 3);
+            break;
+
+          case 12:
+            resp = _chargeMultipleDays(json, 12);
+            break;
+
+          default:
+            reject(resp);
+        }
+
+        resolve(resp);
+      }
+
+    });
+  };
 
 
   self.chargeOneMonth = (json) => {
@@ -60,6 +99,7 @@ const returnObj = function() {
 
   const _chargeMultipleDays = (json, scheduledDays) => {
     let curObj = processDataForCost(json, scheduledDays);
+
     if(curObj.isValid) {
       let cost = curObj.cost * scheduledDays;
       curObj.cost = cost;

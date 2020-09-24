@@ -1,7 +1,5 @@
 const express = require('express');
-
 const PricingCtrl = require('../controllers/pricing-ctrl');
-
 const router = express.Router();
 
 
