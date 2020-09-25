@@ -1,14 +1,11 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-// const path = require('path');
-
-const pricingRouter = require('./server/routes/pricing-router');
-
 const app = express();
-const apiPort = process.env.PORT || 5000;
 
+
+const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 
 
 app.get('/', (req, res) => {
@@ -16,11 +13,14 @@ app.get('/', (req, res) => {
 });
 
 
+
+const pricingRouter = require('./server/routes/pricing-router');
 app.use('/api', pricingRouter);
 
 
 
 // // Serve static files from the React app
+// const path = require('path');
 // app.use(express.static(path.join(__dirname, 'client/build')));
 
 // // The "catchall" handler: for any request that doesn't
@@ -30,7 +30,5 @@ app.use('/api', pricingRouter);
 // });
 
 
-// start server on the specified port, binding host
-app.listen(apiPort, function () {
-    console.log("server starting on " + apiPort);
-});
+
+module.exports = app;

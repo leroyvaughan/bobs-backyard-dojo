@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 //generic scheduler
-router.post('schedule', PricingCtrl.scheduler);
+router.post('/schedule', PricingCtrl.scheduler);
 
 
 // // Could be used when Front End Calendar is added!

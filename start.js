@@ -1,0 +1,10 @@
+const app = require('./server.js');
+
+const apiPort = process.env.PORT || 5000;
+
+
+
+// start server on the specified port, binding host
+app.listen(apiPort, function () {
+  console.log("server starting on " + apiPort);
+});

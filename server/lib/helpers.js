@@ -1,6 +1,11 @@
 const globals = require('./globals')();
 
 var returnObj = function() {
+  const self = this;
+
+  self.init = function() {
+    // console.log("helpers.init()...");
+  }
 
   //https://stackoverflow.com/questions/31422033/check-if-selected-dates-are-from-the-same-week-javascript
 
@@ -165,22 +170,22 @@ var returnObj = function() {
     let errMsg = "";
 
     if (isNull(json.persons)) {
-      errMsg = globals.invalidNumberOfPeopleErr;
+      errMsg = globals.InvalidNumberOfPeopleErr;
     }
     else {
       try {
         if(typeof(json.persons) !== 'number'){
-          errMsg = globals.invalidNumberOfPeopleErr;
+          errMsg = globals.InvalidNumberOfPeopleErr;
         }
 
         const numOfPeeps = parseInt(json.persons);
 
         if (numOfPeeps < 1) {
-          errMsg = globals.invalidNumberOfPeopleErr;
+          errMsg = globals.InvalidNumberOfPeopleErr;
         }
       }
       catch (e) {
-        errMsg = globals.invalidNumberOfPeopleErr;
+        errMsg = globals.InvalidNumberOfPeopleErr;
       }
     }
 
@@ -195,21 +200,21 @@ var returnObj = function() {
     let errMsg = "";
 
     if (!json.timePerSession) {
-      errMsg = globals.invalidTimePerSessionErr;
+      errMsg = globals.InvalidTimePerSessionErr;
     }
     else {
       try {
         if(typeof(json.timePerSession) !== 'number') {
-          errMsg = globals.invalidTimePerSessionErr;
+          errMsg = globals.InvalidTimePerSessionErr;
         }
 
         const sessionTime = parseInt(json.timePerSession);
         if (sessionTime < 2 || sessionTime > 3) {
-          errMsg = globals.invalidTimePerSessionErr;
+          errMsg = globals.InvalidTimePerSessionErr;
         }
       }
       catch (e) {
-        errMsg = globals.invalidTimePerSessionErr;
+        errMsg = globals.InvalidTimePerSessionErr;
       }
     }
 
@@ -248,7 +253,7 @@ var returnObj = function() {
               errMsg = globals.DatesScheduleErr;
             }
             else{
-              if(!isSameWeek(dates)) {
+              if(!_isSameWeek(dates)) {
                 errMsg = globals.DifferingWeeksErr;
               }
             }
@@ -286,7 +291,7 @@ var returnObj = function() {
 
 
   const _processDiscount = (cost, discount) => {
-    if(!_isNull(discount)) {
+    if(!isNull(discount)) {
       let adjustedPrice = cost - (cost * (discount / 100));
       cost = adjustedPrice;
     }
@@ -325,33 +330,7 @@ var returnObj = function() {
 
 
 
-
-
-
-  const _isNull = function (inVar) {
-    if (typeof inVar === 'undefined') {
-      return true;
-    }
-    else if (typeof inVar === 'string') {
-      if (inVar === '') {
-        return true;
-      }
-    }
-    else if (inVar === null) {
-      return true;
-    }
-
-    return false;
-  };
-  self.isNull = _isNull;
-
-
-
-
-
-
-
-
+  self.init();
   return self;
 
 };//end returnObj

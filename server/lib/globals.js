@@ -57,16 +57,19 @@ const returnObj = function() {
 
 
   const _invalidNumberOfPeopleErr = "Invalid number of people for session!";
-  self.invalidNumberOfPeopleErr = _invalidNumberOfPeopleErr;
+  self.InvalidNumberOfPeopleErr = _invalidNumberOfPeopleErr;
 
   const _invalidTimePerSessionErr = "Invalid time per session!";
-  self.invalidTimePerSessionErr = _invalidTimePerSessionErr;
+  self.InvalidTimePerSessionErr = _invalidTimePerSessionErr;
 
   const _noRequestBodyErr = "No request body!";
-  self.noRequestBodyErr = _noRequestBodyErr;
+  self.NoRequestBodyErr = _noRequestBodyErr;
 
   const _schedulerErrTxt = "Error in Scheduler:";
-  self.schedulerErrTxt = _schedulerErrTxt;
+  self.SchedulerErrTxt = _schedulerErrTxt;
+
+
+
   return self;
 };//end returnObj
 
@@ -76,3 +79,31 @@ const returnObj = function() {
 module.exports = () => {
   return new returnObj();
 };
+
+
+
+
+
+
+
+const _isNull = function (inVar) {
+  if (typeof inVar === 'undefined') {
+    return true;
+  }
+  else if (typeof inVar === 'string') {
+    if (inVar === '') {
+      return true;
+    }
+  }
+  else if (inVar === null) {
+    return true;
+  }
+  else if (typeof inVar === 'object') {
+    if (Object.keys(inVar).length < 1) {
+      return true;
+    }
+  }
+
+  return false;
+};
+global.isNull = _isNull;

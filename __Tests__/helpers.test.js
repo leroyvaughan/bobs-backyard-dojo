@@ -192,17 +192,17 @@ describe("Helper Funcs Tests", () => {
 
       it("isValidNumberOfPeople(0) should return err", () => {
         expect(Helpers.isValidNumberOfPeople({ persons: 0 }))
-        .toEqual(globals.invalidNumberOfPeopleErr);
+        .toEqual(globals.InvalidNumberOfPeopleErr);
     });
 
     it("isValidNumberOfPeople('z') should return err", () => {
       expect(Helpers.isValidNumberOfPeople({ persons: 'z' }))
-      .toEqual(globals.invalidNumberOfPeopleErr);
+      .toEqual(globals.InvalidNumberOfPeopleErr);
     });
 
     it("isValidNumberOfPeople(null) should return err", () => {
       expect(Helpers.isValidNumberOfPeople({ persons: null }))
-        .toEqual(globals.invalidNumberOfPeopleErr);
+        .toEqual(globals.InvalidNumberOfPeopleErr);
       });
 
     it("isValidNumberOfPeople(1) should be true", () => {
@@ -217,22 +217,22 @@ describe("Helper Funcs Tests", () => {
 
     it("isValidTimePerSession({}) should return err", () => {
       expect(Helpers.isValidTimePerSession({}))
-      .toEqual(globals.invalidTimePerSessionErr);
+      .toEqual(globals.InvalidTimePerSessionErr);
     });
 
     it("isValidTimePerSession(4) should return err", () => {
       expect(Helpers.isValidTimePerSession({ timePerSession: 4 }))
-      .toEqual(globals.invalidTimePerSessionErr);
+      .toEqual(globals.InvalidTimePerSessionErr);
     });
 
     it("isValidTimePerSession(1) should return err", () => {
       expect(Helpers.isValidTimePerSession({ timePerSession: 1 }))
-      .toEqual(globals.invalidTimePerSessionErr);
+      .toEqual(globals.InvalidTimePerSessionErr);
     });
 
     it("isValidTimePerSession('z') should return err", () => {
       expect(Helpers.isValidTimePerSession({ timePerSession: '1' }))
-      .toEqual(globals.invalidTimePerSessionErr);
+      .toEqual(globals.InvalidTimePerSessionErr);
     });
 
     it("isValidTimePerSession(2) should be true", () => {

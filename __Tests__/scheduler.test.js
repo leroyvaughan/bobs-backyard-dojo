@@ -172,7 +172,7 @@ describe("Scheduler Tests", () => {
       const result = Scheduler.checkDataTest(badJson, 12);
 
       expect(result.isValid).toBe(false);
-      expect(result.errMsg).toEqual(globals.invalidNumberOfPeopleErr);
+      expect(result.errMsg).toEqual(globals.InvalidNumberOfPeopleErr);
     });
 
     it("bad `timePerSession` key in json should return false w/ err", () => {
@@ -180,7 +180,7 @@ describe("Scheduler Tests", () => {
       let result = Scheduler.checkDataTest(badJson, 3);
 
       expect(result.isValid).toBe(false);
-      expect(result.errMsg).toEqual(globals.invalidTimePerSessionErr);
+      expect(result.errMsg).toEqual(globals.InvalidTimePerSessionErr);
     });
 
     it("bad 'dates' key in json should return false", () => {

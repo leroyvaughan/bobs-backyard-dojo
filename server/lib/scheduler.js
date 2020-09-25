@@ -5,26 +5,25 @@ const helpers = require('./helpers')();
 const returnObj = function() {
   const self = this;
 
-
   //leave no room for error in data later on
   const _checkData = (json, len) => {
     let dataCheck = { isValid: false }, errMsg = "";
 
     //check people
-    let peepsInErr = isValidNumberOfPeople(json);
+    let peepsInErr = helpers.isValidNumberOfPeople(json);
     if(peepsInErr != "") {
       dataCheck.errMsg = peepsInErr;
       return dataCheck;
     }
 
     //check time per session
-    let timeInErr = isValidTimePerSession(json);
+    let timeInErr = helpers.isValidTimePerSession(json);
     if(timeInErr != "") {
       dataCheck.errMsg = timeInErr;
       return dataCheck;
     }
 
-    let datesInErr = isValidDatesArray(json, len);
+    let datesInErr = helpers.isValidDatesArray(json, len);
     if(datesInErr !== "") {
       dataCheck.errMsg = datesInErr;
       return dataCheck;
@@ -44,12 +43,12 @@ const returnObj = function() {
     return new Promise((resolve, reject) => {
       let resp = {
         isValid: false,
-        errMsg: globals.noRequestBodyErr
+        errMsg: globals.NoRequestBodyErr
       };
 
       //testing the assumption that days scheduled
       //was added on the Front End
-      if(isNull(json.scheduledDays)) {
+      if (isNull(json.scheduledDays)) {
         reject(resp);
       }
       else{
@@ -74,7 +73,7 @@ const returnObj = function() {
             break;
 
           default:
-            reject(resp);
+            reject("Invalid Data: { scheduledDays }!");
         }
 
         resolve(resp);
@@ -126,7 +125,7 @@ const returnObj = function() {
     const dataCheck = _checkData(json, scheduledDays);
 
     if (dataCheck.isValid) {
-      return calculateSessionPrice(json);
+      return helpers.calculateSessionPrice(json);
     }
     else {//err: isValid = false
       return dataCheck;

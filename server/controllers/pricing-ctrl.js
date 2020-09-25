@@ -1,19 +1,20 @@
-const globals = require('../lib/globals');
+const globals = require('../lib/globals')();
 
 
 const scheduler = (req, res) => {
+  // console.log('"/schedule" call...');
 
-  const body = req.body;
 
-  if (!body) {
+  if(isNull(req.body)){
     return res.status(400).json({
-        success: false,
-        error: globals.noRequestBodyErr,
+      success: false,
+      error: globals.NoRequestBodyErr,
     })
   }
-  else {
-    //has body
-    _doScheduling(body.schedule_request)
+  else {  //has body
+    const schedule_request = req.body;
+
+    _doScheduling(schedule_request)
       .then((resp) => {
         //TODO: digest response
         if(resp.isValid) {
@@ -51,13 +52,14 @@ const _doScheduling = (postData) => {
     //    scheduledDays: (n)  //1, 2, 3, 12
     //  };
 
+      const pricingScheduler = require('../lib/scheduler')();
+
       pricingScheduler.postSchedule(postData)
         .then((resp) => {
           resolve(resp);
         })
         .catch((e) => {
-          // reject(`${globals.SchedulerErrTxt} ${e}`);
-          throw e;
+          reject(`${globals.SchedulerErrTxt} ${e}`);
         });
     }
     catch(e) {
@@ -67,7 +69,6 @@ const _doScheduling = (postData) => {
     }
   });
 }
-
 
 
 module.exports = {
