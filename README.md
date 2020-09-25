@@ -57,7 +57,7 @@ because you've exhausted FB & IG having already read all new posts for the day!!
 
 
 ```
-
+### FOR NOW...
 
 ----------------------------------|---------|----------|---------|---------|-------------------
 File                              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
@@ -84,6 +84,8 @@ Time:        8.89 s, estimated 48 s
 Ran all test suites.
 
 
+* I'm not sure why 102 is showing as not covered in scheduler.js.
+  Test Code clearly goes through it in debugger
 
 ```
 
