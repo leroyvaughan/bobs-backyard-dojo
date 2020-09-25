@@ -173,14 +173,14 @@ describe("Helper Funcs Tests", () => {
       });
 
       it("isValidMonth({differing month.days}) Test: should return false", () => {
-        console.log("--> added day from previous month");
+        // console.log("--> added day from previous month");
         let result = Helpers.isValidMonth(TestData.differingMonths1);
         expect(result.isValid).toBe(false);
         expect(result.errMsg).toEqual(globals.DifferingMonthsErr);
       });
 
       it("isValidMonth({differing month.days}) Test: should return false", () => {
-        console.log("--> added day from month after");
+        // console.log("--> added day from month after");
         let result = Helpers.isValidMonth(TestData.differingMonths2);
         expect(result.isValid).toBe(false);
         expect(result.errMsg).toEqual(globals.DifferingMonthsErr);

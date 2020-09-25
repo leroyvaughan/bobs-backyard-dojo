@@ -55,3 +55,37 @@ because you've exhausted FB & IG having already read all new posts for the day!!
 
 
 
+
+```
+
+
+----------------------------------|---------|----------|---------|---------|-------------------
+File                              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+----------------------------------|---------|----------|---------|---------|-------------------
+All files                         |   98.24 |    96.15 |   98.04 |   98.21 |
+ backyard_dojo                    |      90 |      100 |       0 |      90 |
+  server.js                       |      90 |      100 |       0 |      90 | 12
+ backyard_dojo/server/controllers |   90.48 |      100 |     100 |   90.48 |
+  pricing-ctrl.js                 |   90.48 |      100 |     100 |   90.48 | 67-68
+ backyard_dojo/server/data        |     100 |      100 |     100 |     100 |
+  index.js                        |     100 |      100 |     100 |     100 |
+ backyard_dojo/server/lib         |   98.61 |       96 |     100 |   98.58 |
+  globals.js                      |     100 |      100 |     100 |     100 |
+  helpers.js                      |   97.58 |    95.77 |     100 |    97.5 | 188,217,277-281
+  scheduler.js                    |     100 |    94.12 |     100 |     100 | 102
+ backyard_dojo/server/routes      |     100 |      100 |     100 |     100 |
+  pricing-router.js               |     100 |      100 |     100 |     100 |
+----------------------------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 3 passed, 3 total
+Tests:       70 passed, 70 total
+Snapshots:   0 total
+Time:        8.89 s, estimated 48 s
+Ran all test suites.
+
+
+
+```
+
+
+

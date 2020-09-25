@@ -160,7 +160,6 @@ describe("Pricing Controller Tests", () => {
 
         expect(res.status).toBe(200);
         expect(res.body.success).toBe(true);
-        console.log(expected);
         expect(res.body.data).toEqual(expected);
         done();
       });

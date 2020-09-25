@@ -64,7 +64,7 @@ const _doScheduling = (postData) => {
     }
     catch(e) {
       //error should be {prod}logged or something here?
-      console.log("err in scheduler:\t", e);
+      // console.log("err in scheduler:\t", e);
       reject(`${globals.SchedulerErrTxt} ${e}`);
     }
   });
